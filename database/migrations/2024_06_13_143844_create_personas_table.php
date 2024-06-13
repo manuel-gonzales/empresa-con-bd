@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('persona', function (Blueprint $table) {
+        Schema::create('personas', function (Blueprint $table) {
             $table->bigIncrements('nPerCodigo');
-            $table->char('cPerApellido',50)->nullable();
-            $table->char('cPerNombre',50)->nullable();
+            $table->char('cPerApellido',50)->nullable()->index();
+            $table->char('cPerNombre',50)->nullable()->index();
             $table->string('cPerDireccion',100)->nullable();
             $table->date('dPerFecNac');
             $table->integer('nPerEdad');
-            $table->char('cPerSexo',15)->nullable()->default('Masculino');
             $table->decimal('nPerSueldo',6,2);
             $table->string('cPerRnd',50);
             $table->char('nPerEstado',1)->default(1);
-            $table->string('remember_token',100)->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('persona');
+        Schema::dropIfExists('personas');
     }
 };

@@ -4,7 +4,7 @@ Este proyecto fue creado con Laravel y personalizado con Bootstrap. El software 
 
 ### Imagen de la base de datos en HeidiSQL
 
-![image](https://github.com/manuel-gonzales/empresa-con-bd/assets/141975981/f829c4a9-90d8-4b2d-85e6-7012167b6d67)
+![image](https://github.com/manuel-gonzales/empresa-con-bd/assets/141975981/d80e3566-8c17-408d-b618-dc18ab2ac3b7)
 
 ## Instalación propia de Laravel
 
