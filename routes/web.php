@@ -18,4 +18,6 @@ Route::post('personas', $controller_route.'PersonasController@store')->name('per
 
 Route::get('personas/{nPerCodigo}', $controller_route.'PersonasController@show')->name('personas.show');
 
+Route::delete('personas/{persona}', $controller_route.'PersonasController@destroy')->name('personas.destroy');
+
 Route::view('contacto', 'contacto')->name('contacto');

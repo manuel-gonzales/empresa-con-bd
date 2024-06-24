@@ -49,4 +49,10 @@ class PersonasController extends Controller
     public function show($id){
         return view('personas.show', ['persona' => Persona::find($id)]);
     }
+
+    public function destroy(Persona $persona){
+        $persona->delete();
+
+        return redirect()->route('personas.index');
+    }
 }

@@ -7,9 +7,6 @@
         <tr>
             <td colspan="4">
                 <strong>{{ $persona->cPerNombre }} {{ $persona->cPerApellido }}</strong>
-                <a href="{{ route('personas.edit', $persona) }}">
-                    Editar
-                </a>
             </td>
         </tr>
         <tr>
@@ -43,6 +40,16 @@
             </td>
         </tr>
     </table>
+    <a href="{{ route('personas.edit', $persona) }}">
+        Editar
+    </a><br>
+    <form action="{{ route('personas.destroy', $persona) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button>
+            Eliminar
+        </button>
+    </form>
     <a href="/personas">
         <- Regresar
     </a>
