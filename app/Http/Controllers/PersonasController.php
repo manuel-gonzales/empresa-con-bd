@@ -18,6 +18,18 @@ class PersonasController extends Controller
         return view('personas.create');
     }
 
+    public function edit(Persona $nPerCodigo){
+        return view('personas.edit', [
+            'persona' => $nPerCodigo
+        ]);
+    }
+
+    public function update(Persona $nPerCodigo, CreatePersonaRequest $request){
+        $nPerCodigo->update($request->validated());
+
+        return redirect()->route('personas.show', $nPerCodigo);
+    }
+
     public function store(CreatePersonaRequest $request){
         $data = $request->validated();
 

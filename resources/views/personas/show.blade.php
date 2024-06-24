@@ -7,6 +7,9 @@
         <tr>
             <td colspan="4">
                 <strong>{{ $persona->cPerNombre }} {{ $persona->cPerApellido }}</strong>
+                <a href="{{ route('personas.edit', $persona) }}">
+                    Editar
+                </a>
             </td>
         </tr>
         <tr>

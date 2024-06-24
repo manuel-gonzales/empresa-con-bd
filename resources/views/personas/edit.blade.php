@@ -6,18 +6,27 @@
     <table cellpadding="3" cellspaceing="5">
         <tr>
             <th colspan="4">
-                Crear nuevo registro de persona
+                Editar persona
             </th>
         </tr>
-        <form action="{{ route('personas.store') }}" method="post">
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+        <form action="{{ route('personas.update', $persona) }}" method="POST">
             @csrf
+            @method('PATCH')
             <tr>
                 <th>
                     Apellidos
                 </th>
                 <td>
-                    <input type="text" name="cPerApellido"><br>
-                    {{ $errors->first('cPerApellido') }}
+                    <input type="text" name="cPerApellido" value="{{ old('cPerApellido', $persona->cPerApellido) }}">
                 </td>
             </tr>
             <tr>
@@ -25,8 +34,7 @@
                     Nombre
                 </th>
                 <td>
-                    <input type="text" name="cPerNombre"><br>
-                    {{ $errors->first('cPerNombre') }}
+                    <input type="text" name="cPerNombre" value="{{ old('cPerNombre', $persona->cPerNombre) }}">
                 </td>
             </tr>
             <tr>
@@ -34,8 +42,7 @@
                     Dirección
                 </th>
                 <td>
-                    <input type="text" name="cPerDireccion"><br>
-                    {{ $errors->first('cPerDireccion') }}
+                    <input type="text" name="cPerDireccion" value="{{ old('cPerDireccion', $persona->cPerDireccion) }}">
                 </td>
             </tr>
             <tr>
@@ -43,8 +50,7 @@
                     Fecha de nacimiento
                 </th>
                 <td>
-                    <input type="date" name="dPerFecNac"><br>
-                    {{ $errors->first('dPerFecNac') }}
+                    <input type="date" name="dPerFecNac" value="{{ old('dPerFecNac', $persona->dPerFecNac) }}">
                 </td>
             </tr>
             <tr>
@@ -52,8 +58,15 @@
                     Edad
                 </th>
                 <td>
-                    <input type="number" name="nPerEdad" step="1" min="0" max="120"><br>
-                    {{ $errors->first('nPerEdad') }}
+                    <input type="number" name="nPerEdad" step="1" min="0" max="120" value="{{ old('nPerEdad', $persona->nPerEdad) }}">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Sexo
+                </th>
+                <td>
+                    <input type="text" name="cPerSexo" value="{{ old('cPerSexo', $persona->cPerSexo) }}">
                 </td>
             </tr>
             <tr>
@@ -61,8 +74,7 @@
                     Sueldo
                 </th>
                 <td>
-                    <input type="number" name="nPerSueldo" step="0.01" min="0" max="9999.99"><br>
-                    {{ $errors->first('nPerSueldo') }}
+                    <input type="number" name="nPerSueldo" value="{{ old('nPerSueldo', $persona->nPerSueldo) }}">
                 </td>
             </tr>
             <tr>
@@ -71,11 +83,10 @@
                 </th>
                 <td>
                     <select name="nPerEstado">
-                        <option value="" disabled selected hidden>Elige una opción</option>
+                        <option selected hidden>{{ old('nPerEstado', $persona->nPerEstado) }}</option>
                         <option value="0">0</option>
                         <option value="1">1</option>
-                    </select><br>
-                    {{ $errors->first('nPerEstado') }}
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -84,11 +95,11 @@
                         Cancelar
                     </button>
                     <button>
-                        Guardar
+                        Actualizar
                     </button>
                 </td>
             </tr>
         </form>
     </table>
-    @include('partials.cancelar', ['routeVar' => 'personas.index', 'routePar' => null])
+    @include('partials.cancelar', ['routeVar' => 'personas.show', 'routePar' => $persona])
 @endsection
