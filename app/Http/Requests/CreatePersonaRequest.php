@@ -27,6 +27,7 @@ class CreatePersonaRequest extends FormRequest
             'cPerDireccion' => 'required',
             'dPerFecNac' => 'required',
             'nPerEdad' => 'required',
+            'cPerSexo' => 'required',
             'nPerSueldo' => 'required',
             'nPerEstado' => 'required'
         ];
@@ -40,8 +41,9 @@ class CreatePersonaRequest extends FormRequest
             'cPerDireccion'=> 'Ingrese su dirección',
             'dPerFecNac'=> 'Ingrese su fecha de nacimiento.',
             'nPerEdad'=> 'Ingrese su edad.',
+            'cPerSexo' => 'Ingrese su sexo.',
             'nPerSueldo'=> 'Ingrese su sueldo.',
-            'nPerEstado'=> 'Escoja una de las opciones.'
+            'nPerEstado'=> 'Escoja una de las opciones para estado.'
         ];
     }
 }

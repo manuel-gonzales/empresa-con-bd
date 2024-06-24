@@ -15,7 +15,9 @@ class PersonasController extends Controller
     }
 
     public function create(){
-        return view('personas.create');
+        return view('personas.create', [
+            'persona' => new Persona
+        ]);
     }
 
     public function edit(Persona $nPerCodigo){
