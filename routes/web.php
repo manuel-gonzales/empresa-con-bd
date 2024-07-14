@@ -21,3 +21,7 @@ Route::get('personas/{nPerCodigo}', $controller_route.'PersonasController@show')
 Route::delete('personas/{persona}', $controller_route.'PersonasController@destroy')->name('personas.destroy');
 
 Route::view('contacto', 'contacto')->name('contacto');
+
+Route::post('contacto', $controller_route.'ContactoController@store');
+
+Route::view('contacto/enviado', 'emails.mensaje-enviado')->name('mensaje-enviado');
